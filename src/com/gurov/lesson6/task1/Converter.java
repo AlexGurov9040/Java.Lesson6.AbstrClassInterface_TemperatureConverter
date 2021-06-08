@@ -1,7 +1,19 @@
 package com.gurov.lesson6.task1;
 
-public interface Converter {
+import java.util.Arrays;
 
-    double Convert(double temperature);
+public abstract class Converter {
 
+    abstract double Convert(double temperature);
+
+    public static Converter getInstance(){
+        Locale locale = Locale.getDefault();
+        String[] fahrenheitCountries = {"BS", "US", "BZ", "KY", "PW"};
+
+        if(Arrays.asList(fahrenheitCountries).contains(locale.getCountry())){
+            return new ConvertToFahrenheit();
+        } else {
+            return new ConvertToCelsius();
+        }
+    }
 }

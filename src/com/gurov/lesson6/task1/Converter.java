@@ -4,10 +4,11 @@ import java.util.Arrays;
 
 public abstract class Converter {
 
-    public Locale getInstance(String country,double temperature){
+    public double getConvert(String country,double temperature){
 
         Locale locale = getDefault(country);
-        return locale;
+        temperature = locale.getConvert(temperature);
+        return temperature;
     }
 
     public Locale getDefault(String country){

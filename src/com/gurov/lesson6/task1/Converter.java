@@ -4,16 +4,20 @@ import java.util.Arrays;
 
 public abstract class Converter {
 
-    abstract double Convert(double temperature);
+    public Locale getInstance(String country,double temperature){
 
-    public static Converter getInstance(){
-        Locale locale = Locale.getDefault();
+        Locale locale = getDefault(country);
+        return locale;
+    }
+
+    public Locale getDefault(String country){
+
+        Locale locale;
         String[] fahrenheitCountries = {"BS", "US", "BZ", "KY", "PW"};
-
-        if(Arrays.asList(fahrenheitCountries).contains(locale.getCountry())){
-            return new ConvertToFahrenheit();
-        } else {
-            return new ConvertToCelsius();
-        }
+        if (Arrays.asList(fahrenheitCountries).contains(country))
+            locale = new FahrenheitLocale();
+        else
+            locale = new CelsiusLocale();
+        return locale;
     }
 }

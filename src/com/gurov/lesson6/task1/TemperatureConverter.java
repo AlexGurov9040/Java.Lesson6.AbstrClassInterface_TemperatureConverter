@@ -12,9 +12,14 @@ public class TemperatureConverter {
 
         double temperature = 25.0;
         Converter celsius = new ConvertToCelsius();
+        celsius.getInstance("",temperature);
+
         Converter fahrenheit = new ConvertToFahrenheit();
+        fahrenheit.getInstance("BS",temperature);
+
         Converter kelvin = new ConvertToKelvin();
-        System.out.printf("%.2f degrees Celsius is %.2f degrees Kelvin\n",celsius.Convert(temperature),kelvin.Convert(temperature));
-        System.out.printf("%.2f degrees Celsius is %.2f degrees Fahrenheit\n",celsius.Convert(temperature),fahrenheit.getInstance().Convert(temperature));
+        kelvin.getInstance("",temperature);
+
+        System.out.printf("%.2f degrees Celsius is %.2f degrees Fahrenheit\n",temperature,temperature);
     }
 }

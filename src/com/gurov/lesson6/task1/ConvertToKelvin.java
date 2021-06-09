@@ -3,9 +3,10 @@ package com.gurov.lesson6.task1;
 public class ConvertToKelvin extends Converter{
 
     @Override
-    public double Convert(double temperature){
+    public Locale getDefault(String country){
 
-        return temperature + 273.15;
+        Locale locale = new KelvinLocale();
+        return locale;
     }
 
 }
